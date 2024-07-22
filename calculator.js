@@ -50,7 +50,17 @@ function calculateResult() {
     case "*":
 
     case "/":
-
+      if (currentOperand === "0") {
+        alert("Cannot divide by zero");
+        clearResult();
+        return;
+      }
+      result = previousOperand / parseFloat(currentOperand);
+      result = roundTo(result, 3);
+      function roundTo(num, precision) {
+        const factor = Math.pow(10, precision);
+        return Math.round(num * factor) / factor;
+      }
       break;
   }
   currentOperand = result;
@@ -58,4 +68,4 @@ function calculateResult() {
   operation = null;
   resultInput.value = result;
   resultCalculated = true; // to start calculating next one without pressing =
-}  
+}
