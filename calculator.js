@@ -45,7 +45,8 @@ function calculateResult() {
       result = previousOperand + parseFloat(currentOperand);
       break;
     case "-":
-
+      result = previousOperand - parseFloat(currentOperand);
+      break;
     case "*":
 
     case "/":
