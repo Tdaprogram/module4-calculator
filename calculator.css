@@ -34,3 +34,8 @@ button {
 button:hover {
   background-color: #ddd;
 }
+.resetCalculator {
+  margin-top: 5px;
+  align-content: center;
+  justify-content: center;
+}
