@@ -1,3 +1,4 @@
+initialEnvironment();
 let resultInput = document.getElementById("result-window-data");
 let currentOperand = "";
 let previousOperand = "";
@@ -10,8 +11,11 @@ function clearResult() {
   operation = null;
   resultInput.value = "";
 }
-
+function initialEnvironment() {
+  document.getElementById("divideByZero").style.display = "none";
+}
 function appendNumber(number) {
+  initialEnvironment();
   //No previous Operation's Data in Result Window
   if (resultCalculated == false) {
     currentOperand = currentOperand + number;
@@ -45,11 +49,15 @@ function roundTo(num, precision) {
   }
 }
 function calculateResult() {
-  // Function to round devided numbers result to 2 decimal places.
-
-  if (previousOperand === null || operation === null) return;
+  if (
+    previousOperand === null ||
+    operation === null ||
+    (previousOperand === null && operation === null)
+  )
+    return;
   let result = "";
-  switch (operation) {
+  let currentOperation = operation;
+  switch (currentOperation) {
     case "+":
       result = previousOperand + parseFloat(currentOperand);
       break;
@@ -59,23 +67,19 @@ function calculateResult() {
     case "*":
       result = previousOperand * parseFloat(currentOperand);
       result = roundTo(result, 3);
-      /*function roundTo(num, precision) {
-        const factor = Math.pow(10, precision);
-        return Math.round(num * factor) * factor;
-      }*/
+
       break;
     case "/":
       if (currentOperand === "0") {
-        alert("Cannot divide by zero");
+        // alert("Cannot divide by zero");
+        document.getElementById("divideByZero").style.display = "block";
+        document.getElementById("divideByZero").innerHTML =
+          "Cannot divide by zero";
         clearResult();
         return;
       }
       result = previousOperand / parseFloat(currentOperand);
       result = roundTo(result, 3);
-      /* function roundTo(num, precision) {
-        const factor = Math.pow(10, precision);
-        return Math.round(num * factor) / factor;
-      }*/
 
       break;
   }

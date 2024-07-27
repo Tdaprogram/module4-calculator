@@ -1,6 +1,6 @@
 .calculator {
   width: 300px;
-  margin: 0 auto;
+  margin: 100px auto;
   padding: 10px;
   background-color: #f2f2f2;
   border-radius: 10px;
@@ -38,4 +38,13 @@ button:hover {
   margin-top: 5px;
   align-content: center;
   justify-content: center;
+}
+.divideBysZero {
+  color: red;
+  height: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  align-content: center;
+  margin: 10px;
+  background-color: black;
 }
