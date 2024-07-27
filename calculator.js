@@ -49,6 +49,11 @@ function calculateResult() {
       break;
     case "*":
       result = previousOperand * parseFloat(currentOperand);
+      result = roundTo(result, 3);
+      function roundTo(num, precision) {
+        const factor = Math.pow(10, precision);
+        return Math.round(num * factor) * factor;
+      }
       break;
     case "/":
       if (currentOperand === "0") {
@@ -56,12 +61,12 @@ function calculateResult() {
         clearResult();
         return;
       }
-     result = previousOperand / parseFloat(currentOperand);
-     result = roundTo(result, 3);
-        function roundTo(num, precision) {
-       const factor = Math.pow(10, precision);
-       return Math.round(num * factor) / factor;
-     }     
+      result = previousOperand / parseFloat(currentOperand);
+      result = roundTo(result, 3);
+      function roundTo(num, precision) {
+        const factor = Math.pow(10, precision);
+        return Math.round(num * factor) / factor;
+      }
 
       break;
   }
