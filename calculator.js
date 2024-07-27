@@ -34,7 +34,16 @@ function performOperation(op) {
   currentOperand = "";
   operation = op;
 }
-
+//function to set precision after decimal for * and /
+function roundTo(num, precision) {
+  if (operation == "*") {
+    let factor = Math.pow(10, precision);
+    return Math.round(num * factor) / factor;
+  } else {
+    const factor = Math.pow(10, precision);
+    return Math.round(num * factor) / factor;
+  }
+}
 function calculateResult() {
   // Function to round devided numbers result to 2 decimal places.
 
@@ -50,10 +59,10 @@ function calculateResult() {
     case "*":
       result = previousOperand * parseFloat(currentOperand);
       result = roundTo(result, 3);
-      function roundTo(num, precision) {
+      /*function roundTo(num, precision) {
         const factor = Math.pow(10, precision);
         return Math.round(num * factor) * factor;
-      }
+      }*/
       break;
     case "/":
       if (currentOperand === "0") {
@@ -63,10 +72,10 @@ function calculateResult() {
       }
       result = previousOperand / parseFloat(currentOperand);
       result = roundTo(result, 3);
-      function roundTo(num, precision) {
+      /* function roundTo(num, precision) {
         const factor = Math.pow(10, precision);
         return Math.round(num * factor) / factor;
-      }
+      }*/
 
       break;
   }
